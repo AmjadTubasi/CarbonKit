@@ -93,7 +93,9 @@
     }
 
     _tabExtraWidth = 0;
-
+    if ([self isRTL]) {
+        rect.origin.x = self.superview.frame.size.width - totalWidth;
+    }
     // Set the width of UISegmentedControl to fit all segments
     rect.size.width = totalWidth;
     self.frame = rect;
