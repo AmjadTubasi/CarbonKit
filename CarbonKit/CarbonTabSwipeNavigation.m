@@ -187,10 +187,12 @@
 
     [self callDelegateForTargetIndex];
 
-    [self.pageViewController setViewControllers:@[ viewController ]
-                                      direction:animateDirection
-                                       animated:animate
-                                     completion:animateCompletionBlock];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pageViewController setViewControllers:@[ viewController ]
+                                          direction:animateDirection
+                                           animated:animate
+                                         completion:animateCompletionBlock];
+    });
 }
 
 - (void)syncIndicator {
